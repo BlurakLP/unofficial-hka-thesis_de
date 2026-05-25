@@ -27,7 +27,7 @@
   set text(
     font: settings.font-body, 
     size: settings.font-body-size, 
-    lang: "en"
+    lang: "de"
   )
 
   show math.equation: set text(weight: 400)
@@ -67,7 +67,7 @@
   // Table of Contents
   outline(
     title: {
-      heading(outlined: false, "Table of Contents")
+      heading(outlined: false, "Inhaltsverzeichnis")
       
     },
     target: heading.where(supplement: [Chapter], outlined: true),
@@ -81,7 +81,7 @@
   // List of Figures
   outline(
     title: {
-      heading(outlined: false, "List of Figures")
+      heading(outlined: false, "Abbildungsverzeichnis")
       
     },
     target: figure.where(kind: image),
@@ -91,7 +91,7 @@
   // List of Tables
   outline(
     title: {
-      heading(outlined: false, "List of Tables")
+      heading(outlined: false, "Tabellenverzeichnis")
       
     },
     target: figure.where(kind: table)
@@ -101,7 +101,7 @@
   // List of Listings
   outline(
     title: {
-      heading(outlined: false, "List of Listings")
+      heading(outlined: false, "Listenverzeichnis")
       
     },
     target: figure.where(kind: raw)
@@ -220,7 +220,7 @@
   pagebreak()
   outline(
     title: {
-      heading("Appendix", outlined: true, numbering: none)
+      heading("Anhang", outlined: true, numbering: none)
     },
     target: heading.where(supplement: [Appendix], outlined: true),
     indent: auto,

@@ -13,10 +13,10 @@
 #grid(
   columns: (1fr, 1fr),
   align(left)[
-    #image("/logo/company.svg", height: 1.5cm)
+    #image("/logo/HKA_FakultaetW_logo.png", height: 3cm)
   ],
   align(right)[
-    #image("/logo/HKALogo.png", height: 2cm)
+    #image("/logo/HKA_logo.png", height: 3cm)
   ]
 )
 
@@ -33,6 +33,9 @@
   advisor: advisor,
   start-date: start-date,
   submission-date: submission-date,
+  address-line-1: address-line-1,
+  address-line-2: address-line-2,
+  email-address: email-address,
 )
 
 #show: preface.with(settings: settings)

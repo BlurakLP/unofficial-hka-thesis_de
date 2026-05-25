@@ -10,7 +10,7 @@
   set text(
     font: settings.font-body, 
     size: settings.font-body-size, 
-    lang: "en"
+    lang: "de"
   )
 
   set par(leading: 1em)
@@ -31,14 +31,17 @@
   advisor: "",
   start-date: none,
   submission-date: none,
+  address-line-1: "",
+  address-line-2: "",
+  email-address: "",
 ) = {
 
   v(5mm)
-  align(center, text(font: settings.font-heading, 1.9em, weight: 700, "University of Applied Sciences Karlsruhe"))
+  align(center, text(font: settings.font-heading, 1.9em, weight: 700, "Hochschule Karlsruhe"))
   
   v(15mm)
 
-  align(center, text(font: settings.font-heading, 1.5em, weight: 100, degree + "’s Thesis in " + program))
+  align(center, text(font: settings.font-heading, 1.5em, weight: 100, degree + "Thesis in " + program))
   v(8mm)
 
   if title-german.len() > 0 {
@@ -64,40 +67,25 @@
     
   }
 
-  if advisor.len() > 0 {
-    pad(
-      top: 3em,
-      right: 10%,
-      left: 10%,
-      grid(
-        columns: (3fr, 3fr),
-        gutter: 1em,
-        strong("Author: "), author,
-        strong("Matriculation Number: "), matriculation-number,
-        strong("Place of Work: "), place-of-work,
-        strong("Supervisor: "), supervisor,
-        strong("Advisor: "), advisor,
-        strong("Start Date: "), start-date,
-        strong("Submission Date: "), submission-date,
-      )
+  pad(
+    top: 3em,
+    right: 10%,
+    left: 10%,
+    grid(
+      columns: (3fr, 3fr),
+      gutter: 1em,
+      strong("Eingereicht von: "), author,
+      strong(" "), address-line-1,
+      strong(" "), address-line-2,
+      strong("Email-Adresse: "), email-address,
+      strong("Matrikelnummer: "), matriculation-number,
+      strong("Place of Work: "), place-of-work,
+      strong("Erstbetreuer: "), supervisor,
+      strong("Zweitbetreuer: "), advisor,
+      strong("Startdatum: "), start-date,
+      strong("Abgabedatum: "), submission-date,
     )
-  } else {
-    pad(
-      top: 3em,
-      right: 10%,
-      left: 10%,
-      grid(
-        columns: (3fr, 3fr),
-        gutter: 1em,
-        strong("Author: "), author,
-        strong("Matriculation Number: "), matriculation-number,
-        strong("Place of Work: "), place-of-work,
-        strong("Supervisor: "), supervisor,
-        strong("Start Date: "), start-date,
-        strong("Submission Date: "), submission-date,
-      )
-    )
-  }
+  )
 
   pagebreak()
 }
