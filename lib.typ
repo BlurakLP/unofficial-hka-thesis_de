@@ -2,9 +2,12 @@
 #import "@preview/glossarium:0.5.4": print-glossary, register-glossary
 
 #let in-outline = state("in-outline", false)
+
 #let flex-caption(long, short) = context {
   if in-outline.at(here()) { short } else { long }
 }
+
+//#let flex-caption(long, short) = context if state("in-outline").get() { short } else { long }
 
 #let preface(
   settings: (),
@@ -56,21 +59,13 @@
 #let listings(
   abbreviations: ()
 ) = {
-  register-glossary(abbreviations)
-  // Enable short captions to omit citations
-  show outline: it => {
-      in-outline.update(true)
-      it
-      in-outline.update(false)
-  }
-
   // Table of Contents
   outline(
     title: {
       heading(outlined: false, "Inhaltsverzeichnis")
       
     },
-    target: heading.where(supplement: [Chapter], outlined: true),
+    target: heading.where(supplement: [Kapitel], outlined: true),
     indent: auto,
     depth: 3
   )
@@ -97,24 +92,14 @@
     target: figure.where(kind: table)
   )
   pagebreak()
-
-  // List of Listings
+  
+  // List of Code-blocks
   outline(
     title: {
-      heading(outlined: false, "Listenverzeichnis")
+      heading(outlined: false, "Codeverzeichnis")
       
     },
-    target: figure.where(kind: raw)
-  )
-  pagebreak()
-
-  // List of Abbreviations
-  heading(outlined: false)[List of Abbreviations]
-  
-  print-glossary(
-    abbreviations,
-    show-all: false,
-    disable-back-references: true,
+    target: figure.where(kind: "code")
   )
 }
 
@@ -123,7 +108,7 @@
   body
 ) = {
   // Main Body
-  set heading(numbering: settings.headings-numbering-style, supplement: [Chapter])
+  set heading(numbering: settings.headings-numbering-style, supplement: [Kapitel])
   show heading.where(level: 1): it => {
     if it.numbering == none {
       [

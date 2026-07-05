@@ -1,11 +1,10 @@
-#import "@preview/unofficial-hka-thesis:1.0.1": *
-#import "abbreviations.typ": abbreviations
+#import "@preview/unofficial-hka-thesis:1.1.1": *
 #import "settings/metadata.typ": *
 #import "settings/settings.typ": *
 #import "@preview/glossarium:0.5.4": make-glossary, register-glossary
 
 #show: make-glossary
-#register-glossary(abbreviations)
+
 
 #set document(title: title-english, author: author)
 #open-title-page(settings: settings)
@@ -28,7 +27,6 @@
   subtitle: subtitle-english,
   author: author,
   matriculation-number: matriculation-number,
-  place-of-work: place-of-work,
   supervisor: supervisor,
   advisor: advisor,
   start-date: start-date,
@@ -55,7 +53,6 @@
 #include "supplementary/abstractGerman.typ"
 #pagebreak()
 
-#listings(abbreviations: abbreviations)
 
 #show: main-body.with(
   settings: settings

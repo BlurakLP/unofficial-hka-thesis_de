@@ -20,13 +20,12 @@
   settings: (),
   degree: "",
   program: "",
-  title: "",
-  subtitle: "",
+  title-english: "",
+  subtitle-english: "",
   title-german: "",
   subtitle-german: "",
   author: "",
   matriculation-number: "",
-  place-of-work: "",
   supervisor: "",
   advisor: "",
   start-date: none,
@@ -37,36 +36,22 @@
 ) = {
 
   v(5mm)
-  align(center, text(font: settings.font-heading, 1.9em, weight: 700, "Hochschule Karlsruhe"))
+  align(center, text(font: settings.font-heading, 1.9em, weight: 700, degree + "thesis"))
   
-  v(15mm)
-
-  align(center, text(font: settings.font-heading, 1.5em, weight: 100, degree + "Thesis in " + program))
   v(8mm)
 
-  if title-german.len() > 0 {
-    if subtitle.len() > 0 or subtitle-german.len() > 0 {
-      align(center, text(font: settings.font-heading, 1.2em, weight: 700, title))
-      align(center, text(font: settings.font-heading, 1.2em, weight: 500, subtitle))
-      v(10mm)
-      align(center, text(font: settings.font-heading, 1.2em, weight: 700, title-german))
-      align(center, text(font: settings.font-heading, 1.2em, weight: 500, subtitle-german))  
-    } else {
-      align(center, text(font: settings.font-heading, 1.4em, weight: 700, title))
-      v(10mm)
-      align(center, text(font: settings.font-heading, 1.4em, weight: 700, title-german))
-    }
-  } else {
-    if subtitle.len() > 0 {
-      align(center, text(font: settings.font-heading, 1.8em, weight: 700, title))
-      v(5mm)
-      align(center, text(font: settings.font-heading, 1.4em, weight: 500, subtitle))
-    } else {
-      align(center, text(font: settings.font-heading, 2.0em, weight: 700, title))
-    }
-    
-  }
+  align(center, text(font: settings.font-heading, 1.2em, weight: 700, title-german))
+  align(center, text(font: settings.font-heading, 1.2em, weight: 500, subtitle-german))
+  v(3mm)
+  align(center,line(stroke: 1pt + black, length: 15cm))
+  v(3mm)
+  align(center, text(font: settings.font-heading, 1.2em, weight: 700, title-english))
+  align(center, text(font: settings.font-heading, 1.2em, weight: 500, subtitle-english))  
 
+  //v(8mm)
+  //align(center, text(font: settings.font-heading, 1.5em, weight: 100, degree + "Thesis " + program))
+  v(8mm)
+  
   pad(
     top: 3em,
     right: 10%,
@@ -79,7 +64,7 @@
       strong(" "), address-line-2,
       strong("Email-Adresse: "), email-address,
       strong("Matrikelnummer: "), matriculation-number,
-      strong("Place of Work: "), place-of-work,
+      strong("Studiengang:"), program,
       strong("Erstbetreuer: "), supervisor,
       strong("Zweitbetreuer: "), advisor,
       strong("Startdatum: "), start-date,
